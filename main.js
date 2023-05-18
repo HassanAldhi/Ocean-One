@@ -1,11 +1,25 @@
-var isi = "Ocean One are a turnkey solution to begin the journey of reducing your business’s environmental footprint or going plastic neutral.";
 function edit(){
-    document.getElementById("edit").innerHTML = 
-    '<textarea name="" id="" cols="30" rows="5">'+isi+'</textarea><br><input type="button"value="Replace" id="replace" onclick="replace()" class="btn btn-outline-light"></input>';
+    var align = document.getElementById('align-content');
+    var kickstart = document.getElementById('kickstart');
+    var textarea = document.createElement('textarea');
+    var button = document.createElement('button');
+    textarea.id = 'edit-text';
+    textarea.rows = 5;
+    textarea.cols = 30;
+    textarea.appendChild(document.createTextNode(kickstart.innerText));
+    button.innerHTML = "Replace";
+    button.className = "btn btn-outline-light";
+    align.innerText = '';
+    align.appendChild(textarea);
+    align.appendChild(button);
+    button.addEventListener("click", function(){replace()});
 }
 
 function replace(){
-    document.getElementById("edit").innerHTML = isi;
+    var textarea = document.getElementById("edit-text");
+    var align = document.getElementById("align-content");
+    align.innerHTML = textarea.value;
+    textarea.remove();
 }
 
 function info() {
@@ -15,9 +29,9 @@ function info() {
     document.getElementById("info").innerHTML = `
         <p>Hello ${name},<br> Thank you for submitting the message form. 
         Here is a summary of the data you have provided:<br><br>
-        Email: ${email} <br>
-        Name: ${name} <br>
-        Message: ${message} <br><br>
+        Email : ${email} <br>
+        Name : ${name} <br>
+        Message : ${message} <br><br>
         We will review your message promptly and provide a response as soon as possible.
         <br><br>
         Thank you,
